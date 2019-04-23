@@ -35,6 +35,8 @@ public class ScreenWrap : MonoBehaviour
     {
         ghosts[0] = Instantiate(gameObject, transform.position - new Vector3(screenWidth, 0, 0), Quaternion.identity) as GameObject;
         ghosts[1] = Instantiate(gameObject, transform.position + new Vector3(screenWidth, 0, 0), Quaternion.identity) as GameObject;
+        ghosts[0].transform.parent = transform.parent;
+        ghosts[1].transform.parent = transform.parent;
         Destroy(ghosts[0].GetComponent<ScreenWrap>());
         Destroy(ghosts[1].GetComponent<ScreenWrap>());
     }
