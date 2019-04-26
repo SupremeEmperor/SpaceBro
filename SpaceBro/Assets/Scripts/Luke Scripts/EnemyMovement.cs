@@ -68,4 +68,9 @@ public class EnemyMovement : MonoBehaviour
         }
         
     }
+
+    public void startPin(GameObject startPin)
+    {
+        pin = startPin;
+    }
 }
