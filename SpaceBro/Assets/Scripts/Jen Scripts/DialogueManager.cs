@@ -18,7 +18,15 @@ public class DialogueManager : MonoBehaviour
         dialogue_q = new Queue<Dialogue>();
     }
 
-    
+    private void Update()
+    {
+        if (Input.GetButtonDown("Submit"))
+        {
+            DisplayNextDialogue();
+        }
+    }
+
+
     public void StartDialogue(Dialogue[] conversation)
     {
         //animator.SetBool("isOpen", true);
@@ -35,7 +43,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextDialogue()
     {
-        if(dialogue_q.Count == 0)
+        if (dialogue_q.Count == 0)
         {
             EndDialogue();
             return;
