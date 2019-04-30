@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShooterRotation : MonoBehaviour
 {
+    public bool trace;
+
     GameObject pin;
     // Start is called before the first frame update
     void Start()
@@ -14,7 +16,19 @@ public class ShooterRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 diff = (pin.transform.position - transform.position).normalized;
-        transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg);
+        if (trace)
+        {
+            Vector3 diff = (pin.transform.position - transform.position).normalized;
+            transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, -90f);
+        }
+    }
+
+    public void setRotation(bool to)
+    {
+        trace = to;
     }
 }
