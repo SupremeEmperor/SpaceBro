@@ -9,6 +9,11 @@ public class EnemyMovement : MonoBehaviour
     public float turnRadius;
     private Rigidbody2D rb;
     int pinNum;
+    //Need to implement
+    float waitTime;
+    float lastTime;
+    bool vulnerable = true;
+    bool shooting = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +25,13 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(waitTime > 0){
+            waitTime -= (Time.time - lastTime);
+        }
         check();
         //rotate();
         move();
-        
+        lastTime = Time.time;
     }
 
     public void setSpeed(float sp)
@@ -48,7 +56,11 @@ public class EnemyMovement : MonoBehaviour
     private void move()
     {
         rb.velocity = new Vector2(0, 0);
-        rb.AddForce(transform.right * speed);
+        if (waitTime <= 0)
+        {
+            rb.AddForce(transform.right * speed);
+        }
+        
     }
 
     private void check()
@@ -56,7 +68,11 @@ public class EnemyMovement : MonoBehaviour
         //Debug.Log((pin[pinNum].transform.position - transform.position).magnitude);
         if ((pin.transform.position - transform.position).magnitude < turnRadius)
         {
-            
+            waitTime = pin.GetComponent<pinScript>().waitTime;
+            vulnerable = pin.GetComponent<pinScript>().vulnerable;
+            shooting = pin.GetComponent<pinScript>().shooting;
+            speed = pin.GetComponent<pinScript>().speed;
+
             if (pin.GetComponent<pinScript>().getNext() != null)
             {
                 pin = pin.GetComponent<pinScript>().getNext();
