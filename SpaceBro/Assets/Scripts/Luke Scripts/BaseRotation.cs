@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseRotation : MonoBehaviour
 {
-    public GameObject pin;
+    private GameObject pin;
 
     // Update is called once per frame
     void Update()
