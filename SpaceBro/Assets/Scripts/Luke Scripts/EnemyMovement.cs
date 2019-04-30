@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
     void FixedUpdate()
     {
         check();
-        rotate();
+        //rotate();
         move();
         
     }
