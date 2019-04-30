@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public GameObject[] pin;
+    public GameObject pin;
     public float speed;
     public float turnRadius;
     private Rigidbody2D rb;
@@ -21,14 +21,19 @@ public class EnemyMovement : MonoBehaviour
     void FixedUpdate()
     {
         check();
-        rotate();
+        //rotate();
         move();
         
     }
 
+    public void setSpeed(float sp)
+    {
+        speed = sp;
+    }
+
     void rotate()
     {
-        Vector3 diff = (pin[pinNum].transform.position - transform.position).normalized;
+        Vector3 diff = (pin.transform.position - transform.position).normalized;
         transform.rotation = Quaternion.Euler(0f,0f,Mathf.Atan2(diff.y,diff.x) * Mathf.Rad2Deg);
         
         /*
@@ -48,16 +53,24 @@ public class EnemyMovement : MonoBehaviour
 
     private void check()
     {
-        Debug.Log((pin[pinNum].transform.position - transform.position).magnitude);
-        if ((pin[pinNum].transform.position - transform.position).magnitude < turnRadius)
+        //Debug.Log((pin[pinNum].transform.position - transform.position).magnitude);
+        if ((pin.transform.position - transform.position).magnitude < turnRadius)
         {
-            if (pinNum < (pin.Length - 1))
+            
+            if (pin.GetComponent<pinScript>().getNext() != null)
             {
-                pinNum++;
+                pin = pin.GetComponent<pinScript>().getNext();
             }
             else{
-                pin[pinNum] = GameObject.FindGameObjectWithTag("Despawner");
+                pin = GameObject.FindGameObjectWithTag("Despawner");
             }
+            
         }
+        
+    }
+
+    public void startPin(GameObject startPin)
+    {
+        pin = startPin;
     }
 }
