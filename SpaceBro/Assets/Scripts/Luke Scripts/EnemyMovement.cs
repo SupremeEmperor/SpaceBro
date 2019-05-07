@@ -14,6 +14,10 @@ public class EnemyMovement : MonoBehaviour
     float lastTime;
     bool vulnerable = true;
     bool shooting = false;
+    //Modes of operation
+    public GameObject shootMode;
+    public GameObject notShootMode;
+
 
     // Start is called before the first frame update
     void Start()
@@ -72,7 +76,16 @@ public class EnemyMovement : MonoBehaviour
             vulnerable = pin.GetComponent<pinScript>().vulnerable;
             shooting = pin.GetComponent<pinScript>().shooting;
             speed = pin.GetComponent<pinScript>().speed;
-
+            if (shooting == false)
+            {
+                shootMode.SetActive(true);
+                notShootMode.SetActive(false);
+            }
+            else
+            {
+                shootMode.SetActive(false);
+                notShootMode.SetActive(true);
+            }
             if (pin.GetComponent<pinScript>().getNext() != null)
             {
                 pin = pin.GetComponent<pinScript>().getNext();

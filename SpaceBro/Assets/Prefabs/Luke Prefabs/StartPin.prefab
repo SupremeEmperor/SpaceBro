@@ -45,6 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   next: {fileID: 0}
+  waitTime: 0
+  vulnerable: 0
+  shooting: 0
+  speed: 100
 --- !u!114 &2860921694406021387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 730cceb6271577844bfbbcca29391579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toSpawn: {fileID: 8807219964990522163, guid: 401c3c9e401ec75449d5e044f3fc0bbd, type: 3}
+  toSpawn: {fileID: 2840786196595299638, guid: bb5bae72e174f7b4ebda2e4d2bb49486, type: 3}
   hint: Please input time Chronologicly
   spawnTimes:
   - 1

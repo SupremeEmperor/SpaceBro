@@ -302,6 +302,8 @@ MonoBehaviour:
   pin: {fileID: 0}
   speed: 100
   turnRadius: 0
+  shootMode: {fileID: 0}
+  notShootMode: {fileID: 0}
 --- !u!1001 &1717362464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -595,5 +597,11 @@ PrefabInstance:
       propertyPath: speed
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 4496076304004105572, guid: 071978042616d9d478bf5d251f3d4a37,
+        type: 3}
+      propertyPath: toSpawn
+      value: 
+      objectReference: {fileID: 2840786196595299638, guid: bb5bae72e174f7b4ebda2e4d2bb49486,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 071978042616d9d478bf5d251f3d4a37, type: 3}
