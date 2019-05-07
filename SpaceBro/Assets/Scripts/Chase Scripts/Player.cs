@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     private float screenWidth;
     private Rigidbody2D rb;
 
-    public string state = "idle";
+    private string state = "idle";
 
     void Start()
     {
