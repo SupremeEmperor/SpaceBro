@@ -30,6 +30,8 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue[] conversation)
     {
         //animator.SetBool("isOpen", true);
+        FindObjectOfType<AudioManager>().Stop("Level 1");
+        FindObjectOfType<AudioManager>().Play("RoShamBogus Intro");
 
         dialogue_q.Clear();
 
@@ -68,6 +70,9 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         //animator.SetBool("isOpen", false);
+
+        FindObjectOfType<AudioManager>().Stop("RoShamBogus Intro");
+        FindObjectOfType<AudioManager>().Play("RoShamBogus (Part 1)");
     }
 
 
