@@ -137,6 +137,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9ddf96b0135508468e4899177eba35e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velInterval: 1
+  maxvel: 4
+  dashDelay: 30
+  dashCooldown: 1
+  dashSpeed: 6
+  dashTime: 5
+  state: idle
 --- !u!50 &858415806327357596
 Rigidbody2D:
   serializedVersion: 4
