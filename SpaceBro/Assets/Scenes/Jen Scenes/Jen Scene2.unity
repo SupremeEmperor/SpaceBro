@@ -699,7 +699,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 786b7e0f103a8914fb68d54aacd682d8, type: 3}
     volume: 0.7
     pitch: 1
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - name: RoShamBogus (Part 2)
     clip: {fileID: 8300000, guid: 2b191ae056108b94cadebc92ff4e4dff, type: 3}
