@@ -17,13 +17,13 @@ public class ScreenWrap : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Camera.main.WorldToViewportPoint(transform.position).x <= 0)
+        if (Camera.main.WorldToViewportPoint(transform.position).x <= .25)
         {
             transform.Translate(new Vector3(screenWidth, 0, 0));
             ghosts[0].transform.Translate(new Vector3(screenWidth, 0, 0));
             ghosts[1].transform.Translate(new Vector3(screenWidth, 0, 0));
         }
-        if (Camera.main.WorldToViewportPoint(transform.position).x > 1)
+        if (Camera.main.WorldToViewportPoint(transform.position).x > .75)
         {
             transform.Translate(new Vector3(-screenWidth, 0, 0));
             ghosts[0].transform.Translate(new Vector3(-screenWidth, 0, 0));

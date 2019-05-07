@@ -10,11 +10,11 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        if(instance == null)
+        if(instance == null) //don't have an audiomanager in the scene
         {
             instance = this;
         }
-        else
+        else //do already have an audiomanager in the scene
         {
             Destroy(gameObject);
             return;
@@ -29,15 +29,16 @@ public class AudioManager : MonoBehaviour
 
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
         }
     }
 
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        //Play("TRACKNAME");
+        FindObjectOfType<AudioManager>().Play("Level 1");
     }
+
 
     public void Play(string name)
     {
@@ -49,4 +50,30 @@ public class AudioManager : MonoBehaviour
         }
         s.source.Play();
     }
+
+
+    public void Stop(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        s.source.Stop();
+    }
 }
+
+
+/*
+ * To play sounds (like player death or something like that):
+ * Add this line of code WHEN it's supposed to play (on a collision, etc.):
+ * 
+ * FindObjectOfType<AudioManager>().Play("NAMEOFSOUND");
+ * 
+ * 
+ * to stop:
+ * 
+ * FindObjectOfType<AudioManager>().Stop("NAMEOFSOUND");
+ * 
+*/
