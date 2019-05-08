@@ -141,8 +141,11 @@ MonoBehaviour:
   maxvel: 4
   dashDelay: 30
   dashCooldown: 1
-  dashSpeed: 6
+  dashSpeed: 8
   dashTime: 5
+  bumpSpeed: 4
+  startPoint: {x: 0, y: 0, z: 0}
+  destPoint: {x: 0, y: 0, z: 0}
   state: idle
 --- !u!50 &858415806327357596
 Rigidbody2D:

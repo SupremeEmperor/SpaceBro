@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public int dashCooldown = 1;
     public int dashSpeed = 6;
     public int dashTime = 60;
+    public int bumpSpeed = 4;
 
     private const float deadzone = .2F;
     private const float forceAmount = 100f;
@@ -17,9 +18,11 @@ public class Player : MonoBehaviour
     private int dashCooldownTimer = 0;
     private int dashResetTimer = 0;
     private float screenWidth;
+    public Vector3 startPoint = Vector3.zero;
+    public Vector3 destPoint = Vector3.zero;
     private Rigidbody2D rb;
 
-    private string state = "idle";
+    public string state = "idle";
 
     void Start()
     {
@@ -29,40 +32,66 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(Input.GetAxisRaw("Horizontal") < -deadzone)
+        if(Input.GetAxisRaw("Fire1") == 1)
         {
-            if(state != "left" && state != "dashleft")
+            if(startPoint == Vector3.zero)
             {
-                if(dashTimer < 0 && dashCooldownTimer == 0)
+                startPoint = transform.position;
+                destPoint = transform.position + new Vector3(0, 1 / 3F);
+            }
+            state = "bump";
+        }
+        else if (transform.position.y > startPoint.y)
+        {
+            state = "bumpretract";
+        }
+        else if (state == "bumpretract")
+        {
+            state = "idle";
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+            startPoint = Vector3.zero;
+        }
+        else if (state != "bump" && state != "bumprectract")
+        {
+            if (Input.GetAxisRaw("Horizontal") < -deadzone)
+            {
+                if (state != "left" && state != "dashleft")
                 {
-                    dashTimer = 0;
-                    dashCooldownTimer = dashCooldown;
-                    dashResetTimer = dashTime;
-                    state = "dashleft";
-                }
-                else
-                {
-                    dashTimer = -dashDelay;
-                    state = "left";
+                    if (dashTimer < 0 && dashCooldownTimer == 0)
+                    {
+                        dashTimer = 0;
+                        dashCooldownTimer = dashCooldown;
+                        dashResetTimer = dashTime;
+                        state = "dashleft";
+                    }
+                    else
+                    {
+                        dashTimer = -dashDelay;
+                        state = "left";
+                    }
                 }
             }
-        }
-        else if(Input.GetAxisRaw("Horizontal") > deadzone)
-        {
-            if (state != "right" && state != "dashright")
+            else if (Input.GetAxisRaw("Horizontal") > deadzone)
             {
-                if (dashTimer > 0 && dashCooldownTimer == 0)
+                if (state != "right" && state != "dashright")
                 {
-                    dashTimer = 0;
-                    dashCooldownTimer = dashCooldown;
-                    dashResetTimer = dashTime;
-                    state = "dashright";
+                    if (dashTimer > 0 && dashCooldownTimer == 0)
+                    {
+                        dashTimer = 0;
+                        dashCooldownTimer = dashCooldown;
+                        dashResetTimer = dashTime;
+                        state = "dashright";
+                    }
+                    else
+                    {
+                        dashTimer = dashDelay;
+                        state = "right";
+                    }
                 }
-                else
-                {
-                    dashTimer = dashDelay;
-                    state = "right";
-                }
+            }
+            else
+            {
+                state = "idle";
             }
         }
         else
@@ -70,8 +99,17 @@ public class Player : MonoBehaviour
             state = "idle";
         }
 
-        switch(state)
+        switch (state)
         {
+            case "bump":
+                if (transform.position.y < destPoint.y)
+                    rb.velocity = new Vector2(0, bumpSpeed);
+                else
+                    rb.velocity = Vector2.zero;
+                break;
+            case "bumpretract":
+                rb.velocity = new Vector2(0, -bumpSpeed);
+                break;
             case "right":
                 if (rb.velocity.x < maxvel)
                     rb.velocity += new Vector2(velInterval, 0);
@@ -97,6 +135,8 @@ public class Player : MonoBehaviour
             default:
                 if (Mathf.Abs(rb.velocity.x) != 0)
                     rb.velocity -= new Vector2(velInterval * Mathf.Sign(rb.velocity.x), 0);
+                if (Mathf.Abs(rb.velocity.y) != 0)
+                    rb.velocity = new Vector2(rb.velocity.x, 0);
                 break;
         }
 
