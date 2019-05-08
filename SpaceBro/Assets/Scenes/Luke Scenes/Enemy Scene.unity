@@ -597,6 +597,21 @@ PrefabInstance:
       propertyPath: speed
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 1816229141178845836, guid: 071978042616d9d478bf5d251f3d4a37,
+        type: 3}
+      propertyPath: shooting
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4496076303515352670, guid: 071978042616d9d478bf5d251f3d4a37,
+        type: 3}
+      propertyPath: vulnerable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4496076303515352670, guid: 071978042616d9d478bf5d251f3d4a37,
+        type: 3}
+      propertyPath: shooting
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4496076304004105572, guid: 071978042616d9d478bf5d251f3d4a37,
         type: 3}
       propertyPath: toSpawn
