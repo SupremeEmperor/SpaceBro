@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
         rb.velocity = new Vector2(0, 0);
         
         rb.AddForce(transform.up * -speed);
-        if ((time + life) == Time.time)
+        if ((time + life) <= Time.time)
         {
             Destroy(gameObject);
         }
