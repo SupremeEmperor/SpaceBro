@@ -11,7 +11,7 @@ public class fireControler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nextFire = Time.time;
+        nextFire = Time.time + fireRate;
     }
 
     // Update is called once per frame

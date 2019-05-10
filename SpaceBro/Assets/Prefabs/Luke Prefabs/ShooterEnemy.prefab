@@ -551,14 +551,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7761628955835372081}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 908606970e2534a4182e0663ca9f3671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
+  bullet: {fileID: 4331287504646232314, guid: 196f328f5c4ecd54dbd6d9cb21e0b0f3, type: 3}
   parent: {fileID: 6869385583265137308}
-  fireRate: 0
+  fireRate: 2
 --- !u!1 &8594201175206669181
 GameObject:
   m_ObjectHideFlags: 0
