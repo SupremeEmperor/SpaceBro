@@ -44,3 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   next: {fileID: 0}
+  waitTime: 0
+  vulnerable: 0
+  shooting: 0
+  speed: 100
