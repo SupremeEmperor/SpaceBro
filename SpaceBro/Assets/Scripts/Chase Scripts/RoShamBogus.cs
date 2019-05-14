@@ -7,10 +7,12 @@ public class RoShamBogus : MonoBehaviour
     
     public string state = "idle";
 
+    private Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -19,9 +21,9 @@ public class RoShamBogus : MonoBehaviour
         
     }
 
-    void SetLocation()
+    void SetLocation(Vector3 location)
     {
-
+        transform.Translate(location - transform.position);
     }
 
     void SetSpeed()
