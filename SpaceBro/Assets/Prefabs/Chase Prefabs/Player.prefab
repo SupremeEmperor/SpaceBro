@@ -139,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velInterval: 1
   maxvel: 4
-  dashDelay: 30
+  dashDelay: 15
   dashCooldown: 1
   dashSpeed: 8
   dashTime: 5
