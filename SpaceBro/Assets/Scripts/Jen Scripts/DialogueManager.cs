@@ -7,6 +7,11 @@ public class DialogueManager : MonoBehaviour
 {
     public Text nameText;
     public Text dialogueText;
+
+    public string songToStopDuring; //name of song to stop on dialogue start
+    public string songToTriggerDuring; //name of song to trigger on dialogue start
+    public string songToTriggerAfter; //name of song to trigger on dialogue finish
+
     public Animator animator;
 
 
@@ -30,8 +35,13 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue[] conversation)
     {
         //animator.SetBool("isOpen", true);
-        FindObjectOfType<AudioManager>().Stop("Level 1");
-        FindObjectOfType<AudioManager>().Play("RoShamBogus Intro");
+
+        if (songToStopDuring != "NONE"){
+            FindObjectOfType<AudioManager>().Stop(songToStopDuring);
+        }
+        if (songToTriggerDuring != "NONE"){
+            FindObjectOfType<AudioManager>().Play(songToTriggerDuring);
+        }
 
         dialogue_q.Clear();
 
@@ -71,8 +81,12 @@ public class DialogueManager : MonoBehaviour
     {
         //animator.SetBool("isOpen", false);
 
-        FindObjectOfType<AudioManager>().Stop("RoShamBogus Intro");
-        FindObjectOfType<AudioManager>().Play("RoShamBogus (Part 1)");
+        if (songToTriggerDuring != "NONE"){
+            FindObjectOfType<AudioManager>().Stop(songToTriggerDuring);
+        }
+        if (songToTriggerAfter != "NONE"){
+            FindObjectOfType<AudioManager>().Play(songToTriggerAfter);
+        }
     }
 
 

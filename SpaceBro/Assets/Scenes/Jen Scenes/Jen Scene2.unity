@@ -1252,4 +1252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 79684970}
   dialogueText: {fileID: 1009583310}
+  songToStopDuring: NONE
+  songToTriggerDuring: NONE
+  songToTriggerAfter: NONE
   animator: {fileID: 0}
