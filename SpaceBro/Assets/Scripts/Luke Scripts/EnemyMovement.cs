@@ -43,6 +43,8 @@ public class EnemyMovement : MonoBehaviour
         speed = sp;
     }
 
+
+    //Rotates the direction the player moves
     void rotate()
     {
         Vector3 diff = (pin.transform.position - transform.position).normalized;
@@ -76,7 +78,7 @@ public class EnemyMovement : MonoBehaviour
             vulnerable = pin.GetComponent<pinScript>().vulnerable;
             shooting = pin.GetComponent<pinScript>().shooting;
             speed = pin.GetComponent<pinScript>().speed;
-            if (shooting == false)
+            if (shooting == true)
             {
                 shootMode.SetActive(true);
                 notShootMode.SetActive(false);
