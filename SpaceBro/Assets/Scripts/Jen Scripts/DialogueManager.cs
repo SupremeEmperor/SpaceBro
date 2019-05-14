@@ -7,10 +7,16 @@ public class DialogueManager : MonoBehaviour
 {
     public Text nameText;
     public Text dialogueText;
+
+    public string songToStopOnStart; //name of song to stop on dialogue start
+    public string songToTriggerOnStart; //name of song to trigger on dialogue start
+    public string songToTriggerAfter; //name of song to trigger on dialogue finish
+
     public Animator animator;
 
 
     private Queue<Dialogue> dialogue_q;
+    private bool dialogueActive;
 
 
     void Start()
@@ -20,8 +26,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Submit"))
-        {
+        if (dialogueActive && Input.GetButtonDown("Submit")){
             DisplayNextDialogue();
         }
     }
@@ -29,14 +34,19 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue[] conversation)
     {
+        dialogueActive = true;
         //animator.SetBool("isOpen", true);
-        FindObjectOfType<AudioManager>().Stop("Level 1");
-        FindObjectOfType<AudioManager>().Play("RoShamBogus Intro");
+
+        if (songToStopOnStart != "NONE"){
+            FindObjectOfType<AudioManager>().Stop(songToStopOnStart);
+        }
+        if (songToTriggerOnStart != "NONE"){
+            FindObjectOfType<AudioManager>().Play(songToTriggerOnStart);
+        }
 
         dialogue_q.Clear();
 
-        foreach(Dialogue dialogue in conversation)
-        {
+        foreach(Dialogue dialogue in conversation){
             dialogue_q.Enqueue(dialogue);
         }
 
@@ -45,8 +55,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextDialogue()
     {
-        if (dialogue_q.Count == 0)
-        {
+        if (dialogue_q.Count == 0){
             EndDialogue();
             return;
         }
@@ -69,10 +78,15 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        dialogueActive = false;
         //animator.SetBool("isOpen", false);
 
-        FindObjectOfType<AudioManager>().Stop("RoShamBogus Intro");
-        FindObjectOfType<AudioManager>().Play("RoShamBogus (Part 1)");
+        if (songToTriggerOnStart != "NONE"){
+            FindObjectOfType<AudioManager>().Stop(songToTriggerOnStart);
+        }
+        if (songToTriggerAfter != "NONE"){
+            FindObjectOfType<AudioManager>().Play(songToTriggerAfter);
+        }
     }
 
 
