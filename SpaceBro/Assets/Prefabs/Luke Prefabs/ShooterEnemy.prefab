@@ -90,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pin: {fileID: 0}
   speed: 100
-  turnRadius: 0.5
+  turnRadius: 0.05
   shootMode: {fileID: 7761628955835372081}
   notShootMode: {fileID: 5444771871252097560}
   vulnerableMode: {fileID: 3821913773699428796}
