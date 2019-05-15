@@ -8,9 +8,9 @@ public class DialogueManager : MonoBehaviour
     public Text nameText;
     public Text dialogueText;
 
-    public string songToStopOnStart; //name of song to stop on dialogue start
-    public string songToTriggerOnStart; //name of song to trigger on dialogue start
-    public string songToTriggerAfter; //name of song to trigger on dialogue finish
+    private string songToStopOnStart; //name of song to stop on dialogue start
+    private string songToTriggerOnStart; //name of song to trigger on dialogue start
+    private string songToTriggerAfter; //name of song to trigger on dialogue finish
 
     public Animator animator;
 
@@ -29,6 +29,14 @@ public class DialogueManager : MonoBehaviour
         if (dialogueActive && Input.GetButtonDown("Submit")){
             DisplayNextDialogue();
         }
+    }
+
+
+    public void updateMusic(string stopStart, string triggerStart, string triggerAfter)
+    {
+        songToStopOnStart = stopStart;
+        songToTriggerOnStart = triggerStart;
+        songToTriggerAfter = triggerAfter;
     }
 
 

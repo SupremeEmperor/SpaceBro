@@ -261,6 +261,9 @@ MonoBehaviour:
     sentence: test text 2
   - name: Bro 3
     sentence: More testing 1 2 3
+  songToStopOnStart: NONE
+  songToTriggerOnStart: RoShamBogus Intro
+  songToTriggerAfter: RoShamBogus (Part 1)
 --- !u!1 &79684968
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,7 +1046,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 79684970}
   dialogueText: {fileID: 1009583310}
-  songToStopOnStart: NONE
-  songToTriggerOnStart: RoShamBogus Intro
-  songToTriggerAfter: RoShamBogus (Part 1)
   animator: {fileID: 0}
